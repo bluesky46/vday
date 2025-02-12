@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width: device-width, initial-scale=1.0">
+    <title>Valentine's Day</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffe6f2;
+            margin: 0;
+            text-align: center;
+        }
+        .card {
+            background-color: #ffccd5;
+            width: 350px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .btn-primary {
+            background-color: #ff6699;
+            border-color: #ff6699;
+        }
+        .btn-primary:hover {
+            background-color: #ff3366;
+            border-color: #ff3366;
+        }
+    </style>
+</head>
+<body>
+    <div class="card text-center">
+        <h5 id="message"></h5>
+        <button id="nextButton" class="btn btn-primary mt-3"></button>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const userName = urlParams.get('name') || '';
+        
+        const messageEl = document.getElementById('message');
+        const buttonEl = document.getElementById('nextButton');
+        
+        const message = `On Valentine's Day, being in a loving relationship means you share a bond that is special and unique. No matter the challenges you may face together, your connection is strong and valuable. 💖 Embrace the love you both share, and let this day remind you how fortunate you are to have someone who makes your life brighter.`;
+        
+        const buttonText = "Would you like a gift from us? Here's a love prediction for you and your partner!";
+        
+        const predictions = [
+            "Your bond is about to grow even stronger—expect even more beautiful moments together.",
+            "A surprise awaits you and your partner today. Your love will shine brighter than ever.",
+            "This Valentine's Day, your connection will deepen in ways you never expected.",
+            "Together, you and your partner will overcome any obstacles and come out even stronger.",
+            "A moment of surprise will make your relationship even more special today.",
+            "Love is guiding both of you toward a future full of happiness and shared dreams.",
+            "Today will remind you both of the strength of your bond—cherish every moment.",
+            "Something beautiful will happen in your relationship today. Keep your hearts open!",
+            "The love between you and your partner will inspire others today. It's a magical moment.",
+            "This Valentine's Day, a gesture from your partner will bring you even closer."
+        ];
+        
+        messageEl.textContent = message;
+        buttonEl.textContent = buttonText;
+        
+        buttonEl.addEventListener('click', function() {
+            // Randomly pick a prediction
+            const randomPrediction = predictions[Math.floor(Math.random() * predictions.length)];
+            
+            // Redirect to vday2.html with the prediction as a query parameter
+            window.location.href = `vday2.html?prediction=${encodeURIComponent(randomPrediction)}`;
+        });
+    </script>
+</body>
+</html>

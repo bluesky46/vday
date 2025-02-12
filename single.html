@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width: device-width, initial-scale=1.0">
+    <title>วันวาเลนไทน์</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffe6f2;
+            margin: 0;
+            text-align: center;
+        }
+        .card {
+            background-color: #ffccd5;
+            width: 350px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .btn-primary {
+            background-color: #ff6699;
+            border-color: #ff6699;
+        }
+        .btn-primary:hover {
+            background-color: #ff3366;
+            border-color: #ff3366;
+        }
+    </style>
+</head>
+<body>
+    <div class="card text-center">
+        <h5 id="message"></h5>
+        <button id="nextButton" class="btn btn-primary mt-3"></button>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const userName = urlParams.get('name') || '';
+        
+        const messageEl = document.getElementById('message');
+        const buttonEl = document.getElementById('nextButton');
+        
+        const message = `วันวาเลนไทน์นี้ ถึงคุณจะโสดก็อย่ากังวลไป เพราะความรักมีหลายรูปแบบ แม้จะไม่มีแฟน แต่คุณก็มีคุณค่าและสมควรได้รับความรักจากตัวเองและคนรอบข้าง ❤️ เชื่อเถอะว่า ความรักจะมาในเวลาที่เหมาะสม และบางทีความรักตัวเองก็สำคัญที่สุด!`;
+        
+        const buttonText = "อยากดูดวงไหม นี่คือทำนายความรักของคุณ";
+        
+        const predictions = [
+            "รักตัวเองไม่เจ็บเลยสักวัน แต่เราจะไม่เจ็บไปทำไม มีให้มันเจ็บสิวะ!",
+            "โสด เหงา เศร้า เซ็ง คิดถึงคนเก่า",
+            "ไม่ต้องดูดวง แค่ดูแชทก็รู้แล้วว่าเขาไม่่รัก",
+            "ทั้งใจมีให้แค่คนเก่า",
+            "ดื่มแต่เหล้าเข้าแต่ผับ เสือกอยากมีความรักนะพวกมึงอ่ะ",
+            "สถานะไม่ให้ แต่ให้ไปหา ดีนะยังไม่นอน",
+            "We say it's over But I keep fucking with you ",
+            "บางทีก็ต้องยอมรับว่าเขาไม่รัก"
+        ];
+        
+        messageEl.textContent = message;
+        buttonEl.textContent = buttonText;
+        
+        buttonEl.addEventListener('click', function() {
+            // Randomly pick a prediction
+            const randomPrediction = predictions[Math.floor(Math.random() * predictions.length)];
+            
+            // Redirect to vday2.html with the prediction as a query parameter
+            window.location.href = `vday2.html?prediction=${encodeURIComponent(randomPrediction)}`;
+        });
+    </script>
+</body>
+</html>
